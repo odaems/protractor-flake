@@ -37,6 +37,8 @@ export default function (options = {}, callback = function noop () {}) {
       protractorArgs.push('--specs', specFiles.join(','));
     }
 
+    console.log('Starting protractor', parsedOptions.protractorPath, protractorArgs);
+
     let protractor = spawn(
       parsedOptions.protractorPath,
       protractorArgs
@@ -50,6 +52,10 @@ export default function (options = {}, callback = function noop () {}) {
 
     protractor.on('exit', function (status) {
       handleTestEnd(status, output)
+    });
+
+    protractor.stderr.on('data', (buffer) => {
+      console.log('ERR', buffer.toString());
     });
   }
 

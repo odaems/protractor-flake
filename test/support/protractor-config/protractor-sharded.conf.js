@@ -6,11 +6,11 @@ var JOB_NAME = 'Flake';
 
 exports.config = {
   specs: [
-    '../*.test.js'
+    '../a-passing-test.test.js'
   ],
 
   capabilities: {
-    browserName: 'chrome',
+    browserName: 'firefox',
     name: JOB_NAME,
     shardTestFiles: true,
     maxInstances: 2

@@ -1,5 +1,12 @@
 describe('A test that passes', () => {
   it('passes', () => {
-    expect(true).toEqual(true);
+    console.log('Within protractor block');
+    browser.get('/');
+
+    browser.driver.getPageSource().then(function (source) {
+      console.log(source);
+    });
+
+    expect($('#failure').isPresent()).toBeTruthy();
   });
 });

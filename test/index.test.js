@@ -19,6 +19,9 @@ describe('Protractor Flake', () => {
           on (event, callback) {
             spawnStub.dataCallback = callback;
           },
+        },
+        stderr: {
+          on: sandbox.stub()
         }
       });
 
